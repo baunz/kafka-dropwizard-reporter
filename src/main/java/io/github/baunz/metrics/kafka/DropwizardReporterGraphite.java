@@ -1,4 +1,4 @@
-package com.simple.metrics.kafka;
+package io.github.baunz.metrics.kafka;
 
 import com.codahale.metrics.graphite.Graphite;
 import com.codahale.metrics.graphite.GraphiteReporter;
