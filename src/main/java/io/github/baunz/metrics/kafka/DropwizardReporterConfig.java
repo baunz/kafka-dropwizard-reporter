@@ -1,4 +1,4 @@
-package com.simple.metrics.kafka;
+package io.github.baunz.metrics.kafka;
 
 import org.apache.kafka.common.config.AbstractConfig;
 import org.apache.kafka.common.config.ConfigDef;

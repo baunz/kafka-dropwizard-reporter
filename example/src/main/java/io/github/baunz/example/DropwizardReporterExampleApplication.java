@@ -1,4 +1,4 @@
-package com.simple.example;
+package io.github.baunz.example;
 
 import com.codahale.metrics.SharedMetricRegistries;
 import io.dropwizard.Application;

@@ -1,4 +1,4 @@
-package com.simple.example;
+package io.github.baunz.example;
 
 import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;

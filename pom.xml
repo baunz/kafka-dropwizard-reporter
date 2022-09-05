@@ -2,13 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.simple</groupId>
+    <groupId>io.github.baunz</groupId>
     <artifactId>kafka-dropwizard-reporter</artifactId>
     <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>kafka-dropwizard-reporter</name>
-    <url>https://github.com/SimpleFinance/kafka-dropwizard-reporter</url>
+    <url>https://github.com/baunz/kafka-dropwizard-reporter</url>
     <description>Register built-in Kafka client metrics to Dropwizard Metrics</description>
 
     <properties>
@@ -20,14 +20,9 @@
 
     <developers>
         <developer>
-            <name>Jeff Klukas</name>
-            <email>klukas@simple.com</email>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <name>Simple</name>
-            <email>support@simple.com</email>
-            <timezone>-8</timezone>
+            <name>Johannes Schulte</name>
+            <email>johannes.schulte@gmail.com</email>
+            <timezone>Europe/Berlin</timezone>
         </developer>
     </developers>
 
@@ -39,14 +34,14 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:SimpleFinance/kafka-dropwizard-reporter.git</connection>
-        <developerConnection>scm:git:git@github.com:SimpleFinance/kafka-dropwizard-reporter.git</developerConnection>
-        <url>git@github.com:SimpleFinance/kafka-dropwizard-reporter.git</url>
+        <connection>scm:git:git@github.com:baunz/kafka-dropwizard-reporter.git</connection>
+        <developerConnection>scm:git:git@github.com:baunz/kafka-dropwizard-reporter.git</developerConnection>
+        <url>git@github.com:baunz/kafka-dropwizard-reporter.git</url>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>http://github.com/SimpleFinance/kafka-dropwizard-reporter/issues#issue/</url>
+        <url>https://github.com/baunz/kafka-dropwizard-reporter/issues#issue/</url>
     </issueManagement>
 
     <repositories>
@@ -110,7 +105,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -123,7 +118,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -143,8 +138,13 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -157,7 +157,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>

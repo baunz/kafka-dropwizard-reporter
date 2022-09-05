@@ -1,8 +1,8 @@
-# kafka-dropwizard-reporter [![Build Status](https://travis-ci.org/SimpleFinance/kafka-dropwizard-reporter.svg?branch=master)](https://travis-ci.org/SimpleFinance/kafka-dropwizard-reporter)
+# kafka-dropwizard-reporter ![Build Status](https://github.com/baunz/kafka-dropwizard-reporter/actions/workflows/build.yaml/badge.svg)]
 
 This package provides a `DropwizardReporter` class that connects the
 built-in metrics maintained by Kafka's client libraries with
-Dropwizard Metrics 3.0+.
+Dropwizard Metrics 4.0+.
 The Kafka metrics are added as `Gauge` instances to a Dropwizard
 `MetricRegistry` instance.
 
@@ -13,7 +13,7 @@ producer, and streams metrics to those same outputs.
 
 ## Compatibility
 
-`dropwizard-metrics` 3.0 and above.
+`dropwizard-metrics` 4.0 and above.
 
 `kafka-clients` 0.8.1 and above, including 0.9, 0.10, 0.11, and 1.0.
 Also functions with Kafka Streams and Kafka Connect.
@@ -25,7 +25,7 @@ First, declare a dependency on this package and on the explicit versions
 of the dependencies that you want:
 ```xml
       <dependency>
-          <groupId>com.simple</groupId>
+          <groupId>io.github.baunz</groupId>
           <artifactId>kafka-dropwizard-reporter</artifactId>
           <version>1.1.1</version>
       </dependency>
@@ -35,12 +35,12 @@ of the dependencies that you want:
       <dependency>
           <groupId>io.dropwizard.metrics</groupId>
           <artifactId>metrics-core</artifactId>
-          <version>3.1.2</version>
+          <version>4.1.12.1</version>
       </dependency>
       <dependency>
           <groupId>org.apache.kafka</groupId>
           <artifactId>kafka-clients</artifactId>
-          <version>0.9.0.1</version>
+          <version>3.2.1</version>
           <scope>provided</scope>
       </dependency>
 
@@ -49,7 +49,7 @@ of the dependencies that you want:
       <dependency>
           <groupId>io.dropwizard.metrics</groupId>
           <artifactId>metrics-graphite</artifactId>
-          <version>3.1.2</version>
+          <version>4.1.12.1</version>
           <scope>provided</scope>
       </dependency>
 ```
@@ -57,7 +57,7 @@ of the dependencies that you want:
 Then, include the `DropwizardReporter` class in the properties you pass
 to producers, consumers, and `KafkaStreams` applications:
 ```
-metric.reporters=com.simple.metrics.kafka.DropwizardReporter
+metric.reporters=io.github.baunz.metrics.kafka.DropwizardReporter
 ```
 
 That client will now automatically register all of its built-in
@@ -75,7 +75,7 @@ application, see [example/](example/).
 ## Reporting to Graphite
 
 If your application is not already handling reporting of metrics to an external
-source, you can use `com.simple.metrics.kafka.DropwizardReporterGraphite`
+source, you can use `io.github.baunz.metrics.kafka.DropwizardReporterGraphite`
 which adds instantiation of a `GraphiteReporter`.
 Make sure you've declared a dependency on `metrics-graphite`, then
 see <a href="configuration">Configuration</a> below.
@@ -108,30 +108,22 @@ you can pass a name as `metric.dropwizard.registry` when configuring the client.
 For example, the following would end up calling
 `SharedMetricRegistries.getOrCreate("kafka-metrics")`:
 ```
-metric.reporters=com.simple.metrics.kafka.DropwizardReporter
+metric.reporters=io.github.baunz.metrics.kafka.DropwizardReporter
 metric.dropwizard.registry=kafka-metrics
 ```
 
 A configuration using Graphite reporting could be:
 ```
-metric.reporters=com.simple.metrics.kafka.DropwizardGraphiteReporter
+metric.reporters=io.github.baunz.metrics.kafka.DropwizardGraphiteReporter
 metric.dropwizard.graphite.host=localhost
 metric.dropwizard.graphite.port=2003
 metric.dropwizard.graphite.prefix=mycompany.myproject
 ```
 
-Note that usage of these configuration options might trigger warning messages like
-`org.apache.kafka.clients.consumer.ConsumerConfig: The configuration metric.dropwizard.registry = kafka-metrics was supplied but isn't a known config.`
-due to a bug in Kafka's configuration machinery present until at least version 0.10.0.0.
-This was addressed in [KAFKA-3711](https://issues.apache.org/jira/browse/KAFKA-3711).
-
 ## Building
 
 To build the project, you'll need to
 [install Apache Maven 3](https://maven.apache.org/install.html).
-If you're on Mac OS X, you can install Maven via [Homebrew](http://brew.sh/):
-
-    $ brew install maven
 
 Once that's installed, run the following from main directory
 (where `pom.xml` lives):
@@ -160,7 +152,7 @@ If the `target` directory looks good, deploy:
 
     mvn deploy -Psign
 
-You'll need to have an account with Maven Central as part of the `com.simple`
+You'll need to have an account with Maven Central as part of the `io.github.baunz`
 group. Contact the project maintainer for more info.
 Visit https://oss.sonatype.org/index.html#stagingRepositories
 and close the new staging repository (named something like `comsimple-XXXX`).
@@ -179,10 +171,9 @@ or submit a pull request to this repo.
 
 ## Changelog
 
-Check the [releases](https://github.com/SimpleFinance/kafka-dropwizard-reporter/releases)
+Check the [releases](https://github.com/baunz/kafka-dropwizard-reporter/releases)
 page for summaries of what has changed in each release.
 
 ## Also See
 
-This project takes significant inspiration from the `GraphiteReporter` class
-defined in [apakulov/kafka-graphite](https://github.com/apakulov/kafka-graphite).
+This project has been forked from [SimpleFinance/kafka-dropwizard-reporter](https://github.com/SimpleFinance/kafka-dropwizard-reporter).
