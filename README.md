@@ -15,7 +15,7 @@ producer, and streams metrics to those same outputs.
 
 `dropwizard-metrics` 4.0 and above.
 
-`kafka-clients` 0.8.1 and above, including 0.9, 0.10, 0.11, and 1.0.
+`kafka-clients` 1.0.0 and above.
 Also functions with Kafka Streams and Kafka Connect.
 
 
@@ -27,7 +27,7 @@ of the dependencies that you want:
       <dependency>
           <groupId>io.github.baunz</groupId>
           <artifactId>kafka-dropwizard-reporter</artifactId>
-          <version>1.1.1</version>
+          <version>2.0.0</version>
       </dependency>
 
       <!-- Required; you must provide metrics-core and kafka-clients;
@@ -70,7 +70,7 @@ before instantiating Kafka clients if you want metrics to belong
 to `myRegistry`.
 
 For a full example of integrating Kafka client metrics in a Dropwizard
-application, see [example/](example/).
+application, see the [integration test](src/test/java/io/github/baunz/metrics/kafka/DropwizardReporterIntegrationTest.java).
 
 ## Reporting to Graphite
 
