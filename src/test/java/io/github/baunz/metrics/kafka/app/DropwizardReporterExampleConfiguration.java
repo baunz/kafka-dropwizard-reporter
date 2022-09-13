@@ -1,16 +1,13 @@
-package io.github.baunz.example;
+package io.github.baunz.metrics.kafka.app;
 
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Properties;
 
 public class DropwizardReporterExampleConfiguration extends Configuration {
     @NotEmpty
     private Properties producer;
-
-    @NotEmpty
-    private Properties consumer;
 
     public Properties getProducer() {
         return producer;
@@ -18,13 +15,5 @@ public class DropwizardReporterExampleConfiguration extends Configuration {
 
     public void setProducer(Properties producer) {
         this.producer = producer;
-    }
-
-    public Properties getConsumer() {
-        return consumer;
-    }
-
-    public void setConsumer(Properties consumer) {
-        this.consumer = consumer;
     }
 }

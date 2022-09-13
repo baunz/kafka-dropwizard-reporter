@@ -1,0 +1,5 @@
+producer:
+  client.id: my-producer-id
+  key.serializer: org.apache.kafka.common.serialization.StringSerializer
+  value.serializer: org.apache.kafka.common.serialization.StringSerializer
+  metric.reporters: io.github.baunz.metrics.kafka.DropwizardReporter
