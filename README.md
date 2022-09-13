@@ -1,4 +1,4 @@
-# kafka-dropwizard-reporter ![Build Status](https://github.com/baunz/kafka-dropwizard-reporter/actions/workflows/build.yaml/badge.svg)]
+# kafka-dropwizard-reporter ![Build Status](https://github.com/baunz/kafka-dropwizard-reporter/actions/workflows/build.yaml/badge.svg)
 
 This package provides a `DropwizardReporter` class that connects the
 built-in metrics maintained by Kafka's client libraries with
@@ -15,11 +15,14 @@ producer, and streams metrics to those same outputs.
 
 `dropwizard-metrics` 4.0 and above.
 
-`kafka-clients` 0.8.1 and above, including 0.9, 0.10, 0.11, and 1.0.
+`kafka-clients` 1.0.0 and above.
+
 Also functions with Kafka Streams and Kafka Connect.
 
 
 ## Usage
+
+### Dropwizard
 
 First, declare a dependency on this package and on the explicit versions
 of the dependencies that you want:
@@ -27,7 +30,7 @@ of the dependencies that you want:
       <dependency>
           <groupId>io.github.baunz</groupId>
           <artifactId>kafka-dropwizard-reporter</artifactId>
-          <version>1.1.1</version>
+          <version>2.0.0</version>
       </dependency>
 
       <!-- Required; you must provide metrics-core and kafka-clients;
@@ -70,7 +73,7 @@ before instantiating Kafka clients if you want metrics to belong
 to `myRegistry`.
 
 For a full example of integrating Kafka client metrics in a Dropwizard
-application, see [example/](example/).
+application, see the [integration test](src/test/java/io/github/baunz/metrics/kafka/DropwizardReporterIntegrationTest.java).
 
 ## Reporting to Graphite
 
@@ -130,38 +133,6 @@ Once that's installed, run the following from main directory
 ```
 mvn clean install
 ```
-
-## Deploying
-
-To deploy to Maven Central, you'll need to provide GPG signatures for all
-the artifacts. There's a `sign` profile for this purpose:
-
-    mvn clean verify -Psign
-
-Check that the output looks good. You should a jar, sources, javadoc, and pom,
-each with a signed `.asc` companion:
-``` bash
-$ ls target/kafka-*
-target/kafka-dropwizard-reporter-1.1.1-javadoc.jar      target/kafka-dropwizard-reporter-1.1.1.jar
-target/kafka-dropwizard-reporter-1.1.1-javadoc.jar.asc  target/kafka-dropwizard-reporter-1.1.1.jar.asc
-target/kafka-dropwizard-reporter-1.1.1-sources.jar      target/kafka-dropwizard-reporter-1.1.1.pom
-target/kafka-dropwizard-reporter-1.1.1-sources.jar.asc  target/kafka-dropwizard-reporter-1.1.1.pom.asc
-```
-
-If the `target` directory looks good, deploy:
-
-    mvn deploy -Psign
-
-You'll need to have an account with Maven Central as part of the `io.github.baunz`
-group. Contact the project maintainer for more info.
-Visit https://oss.sonatype.org/index.html#stagingRepositories
-and close the new staging repository (named something like `comsimple-XXXX`).
-Wait a few minutes, then select the repo again and "Release" it.
-If there is no "Release" button, something is wrong with your artifacts,
-or they haven't been closed out yet.
-
-Once released, it will take some time for Maven Central to sync and for the
-artifact to be available.
 
 ## Contributing
 
